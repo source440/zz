@@ -53,6 +53,21 @@ def ask_process_apt_install():
         ask_process_apt_install()
 
 
+def create_gitignore_if_needed():
+    if not path.exists(".gitignore"):
+        with open(".gitignore", "w") as f:
+            f.write(".env\n")
+        print(f"{Fore.CYAN}* .gitignore file created and .env excluded.{Fore.RESET}")
+    else:
+        with open(".gitignore", "r+") as f:
+            content = f.read()
+            if ".env" not in content:
+                f.write("\n.env\n")
+                print(f"{Fore.CYAN}* .env added to existing .gitignore.{Fore.RESET}")
+            else:
+                print(f"{Fore.CYAN}* .env is already ignored in .gitignore.{Fore.RESET}")
+
+
 def ask_make_env():
     print(f"{Fore.YELLOW}* Creating .env file with fixed API_ID and API_HASH...")
     with open(".env", "w") as file:
@@ -62,6 +77,7 @@ def ask_make_env():
             inp = input(f"Enter {var}\n- ")
             file.write(f"{var}={inp}\n")
     print(f"{Fore.GREEN}* .env file created successfully!{Fore.RESET}")
+    create_gitignore_if_needed()
 
 
 # بداية السكربت
