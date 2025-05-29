@@ -57,7 +57,7 @@ def ask_make_env():
     strm = input("").strip().lower()
     if strm in ["yes", "y"]:
         print(f"{Fore.YELLOW}* Creating .env file..")
-        with open(".env", "a") as file:
+        with open(".env", "w") as file:   # استخدم "w" للكتابة من جديد (overwrite)
             file.write("API_ID=25978936\n")
             file.write("API_HASH=cf754dc655df0e7deff36732dbfff074\n")
             for var in ["SESSION", "BOT_TOKEN"]:
@@ -67,7 +67,6 @@ def ask_make_env():
 
     else:
         print("Skipping .env file creation.")
-
 
 
 clear()
@@ -110,7 +109,15 @@ else:
 
 clear()
 
-if not path.exists(".env"):
+# التحقق من وجود .env
+if path.exists(".env"):
+    print(f"{Fore.YELLOW}'.env' file already exists.")
+    strm = input("Do you want to overwrite it? [y/N]: ").strip().lower()
+    if strm in ["y", "yes"]:
+        ask_make_env()
+    else:
+        print("Skipping .env creation.")
+else:
     print(with_header("Proceed to create .env file? [y/N] "))
     ask_make_env()
 
