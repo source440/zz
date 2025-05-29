@@ -29,11 +29,11 @@ APT_PACKAGES = ["ffmpeg", "neofetch", "mediainfo"]
 COPYRIGHT = f"Jmthon {datetime.now().year}"
 HEADER = f"""
        __     ______  __  .__   __.  _______ .__   __.  _______ .__   __. 
-\ \   / / __ \|  | |  \ |  | |   ____||  \ |  | |   ____||  \ |  | 
- \ \_/ / |  | |  | |   \|  | |  |__   |   \|  | |  |__   |   \|  | 
-  \   /| |  | |  | |  . `  | |   __|  |  . `  | |   __|  |  . `  | 
-   | | | |__| |  | |  |\   | |  |____ |  |\   | |  |____ |  |\   | 
-   |_|  \____/|__| |__| \__| |_______||__| \__| |_______||__| \__|"""
+\\ \\   / / __ \\|  | |  \\ |  | |   ____||  \\ |  | |   ____||  \\ |  | 
+ \\ \\_/ / |  | |  | |   \\|  | |  |__   |   \\|  | |  |__   |   \\|  | 
+  \\   /| |  | |  | |  . `  | |   __|  |  . `  | |   __|  |  . `  | 
+   | | | |__| |  | |  |\\   | |  |____ |  |\\   | |  |____ |  |\\   | 
+   |_|  \\____/|__| |__| \\__| |_______||__| \\__| |_______||__| \\__|"""
 
 def with_header(text):
     return Fore.MAGENTA + HEADER + Fore.RESET + "\n\n" + text
@@ -57,16 +57,15 @@ def ask_make_env():
     strm = input("").strip().lower()
     if strm in ["yes", "y"]:
         print(f"{Fore.YELLOW}* Creating .env file..")
-        with open(".env", "w") as file:   # استخدم "w" للكتابة من جديد (overwrite)
-            file.write("API_ID=25978936\n")
-            file.write("API_HASH=cf754dc655df0e7deff36732dbfff074\n")
-            for var in ["SESSION", "BOT_TOKEN"]:
+        with open(".env", "a") as file:
+            for var in ["API_ID", "API_HASH", "SESSION", "BOT_TOKEN", "REDIS_URI", "REDIS_PASSWORD"]:
                 inp = input(f"Enter {var}\n- ")
                 file.write(f"{var}={inp}\n")
         print("* Created '.env' file successfully ")
 
     else:
         print("Skipping .env file creation.")
+
 
 
 clear()
@@ -109,25 +108,18 @@ else:
 
 clear()
 
-# التحقق من وجود .env
-if path.exists(".env"):
-    print(f"{Fore.YELLOW}'.env' file already exists.")
-    strm = input("Do you want to overwrite it? [y/N]: ").strip().lower()
-    if strm in ["y", "yes"]:
-        ask_make_env()
-    else:
-        print("Skipping .env creation.")
-else:
+if not path.exists(".env"):
     print(with_header("Proceed to create .env file? [y/N] "))
     ask_make_env()
 
 clear()
 print(with_header(f"\n{Fore.GREEN}Installation complete! 🥳"))
 sleep(0.2)
-print(f"Use 'cd yamenthon && python3 -m yamenthon' to run yamenthon.{Fore.RESET}")
+print(f"Use 'cd Source && python3 -m yamenthon' to run yamenthon.{Fore.RESET}")
 sleep(0.5)
-print("\nFor help, join @YamenThon_Gorop.")
+print("\nFor help, join @yamenthon.")
 sleep(0.5)
-print("\nMade by @YamenThon.")
+print("\nMade by @yamenthon.")
 
 system("pip uninstall -q colorama -y")
+
