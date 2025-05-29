@@ -54,22 +54,18 @@ def ask_process_apt_install():
 
 
 def ask_make_env():
-    strm = input("").strip().lower()
-    if strm in ["yes", "y"]:
-        print(f"{Fore.YELLOW}* Creating .env file..")
-        with open(".env", "a") as file:
-            for var in ["API_ID", "API_HASH", "SESSION", "BOT_TOKEN", "REDIS_URI", "REDIS_PASSWORD"]:
-                inp = input(f"Enter {var}\n- ")
-                file.write(f"{var}={inp}\n")
-        print("* Created '.env' file successfully ")
-
-    else:
-        print("Skipping .env file creation.")
+    print(f"{Fore.YELLOW}* Creating .env file with fixed API_ID and API_HASH...")
+    with open(".env", "w") as file:
+        file.write("API_ID=25978936\n")
+        file.write("API_HASH=cf754dc655df0e7deff36732dbfff074\n")
+        for var in ["SESSION", "BOT_TOKEN"]:
+            inp = input(f"Enter {var}\n- ")
+            file.write(f"{var}={inp}\n")
+    print(f"{Fore.GREEN}* .env file created successfully!{Fore.RESET}")
 
 
-
+# بداية السكربت
 clear()
-
 print(
     f"""
 {Fore.GREEN}- Please review the terms and conditions for installation at the following link
@@ -122,4 +118,3 @@ sleep(0.5)
 print("\nMade by @yamenthon.")
 
 system("pip uninstall -q colorama -y")
-
