@@ -12,3 +12,6 @@ gitpython
 yt-dlp
 ytdl
 youtube-search-python
+aiohttp
+datetime
+urllib3
