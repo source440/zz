@@ -119,7 +119,7 @@ def get_doc(module, type=""):
         msg += "\n ©️ @YamenThon"
     return msg
 
-@jmthon_cmd("الاوامر($| (.*))")
+@jmthon_cmd("مساعده($| (.*))")
 async def help_cmd(event: NewMessage.Event):
     module = event.pattern_match.group(1).strip()
     if not module:
