@@ -8,7 +8,7 @@
 ❃ `{i}رفع مرتي`
 ❃ `{i}رفع زوجي`
 ❃ `{i}رفع تاج`
-❃ `{i}رفع بكلبي`
+❃ `{i}رفع بقلبي`
 ❃ `{i}رفع بزون`
 ❃ `{i}رفع قرد`
 
@@ -32,7 +32,7 @@ from resources.fun import *
 
 from .. import *
 
-@jmthon_cmd(pattern="رفع بكلبي(?: |$)(.*)")
+@jmthon_cmd(pattern="رفع بقلبي(?: |$)(.*)")
 async def permalink(mention):
     user, custom = await get_uinfo(mention)
     if not user:
@@ -40,7 +40,7 @@ async def permalink(mention):
     if custom:
         return await eor(mention, f"[{custom}](tg://user?id={user.id})")
     tag = user.first_name.replace("\u2060", "") if user.first_name else user.username
-    await eor(mention, f"- المستخدم [{tag}](tg://user?id={user.id}) \n- تـم رفعـه بڪلبك 🖤 ")
+    await eor(mention, f"- المستخدم [{tag}](tg://user?id={user.id}) \n- تـم رفعـه بقلبك 🥺🖤 ")
 
 @jmthon_cmd(pattern="رفع زوجي(?: |$)(.*)")
 async def permalink(mention):
@@ -132,6 +132,8 @@ async def permalink(mention):
     user, custom = await get_uinfo(mention)
     if not user:
         return
+    if user.id == 5571722913:
+        return await eor(mention, f"**- برد لك بس ذا مطور السورس يا ورع 😂**")
     muh = user.first_name.replace("\u2060", "") if user.first_name else user.username
     jmbot = random.choice(rr7)
     await eor(mention, f"نسبة الغباء لـ [{muh}](tg://user?id={user.id}) هـي {jmbot} 😂💔")
