@@ -49,6 +49,7 @@ async def update_jmthon(e):
         await bash("git pull -f")
         await xx.edit("**⌔∮ جار التحديث الخفيف يرجى الأنتظار**")
         os.execl(sys.executable, sys.executable, "-m", "yamenthon")
+
     remote_url = repo.get_remote_url()
     if remote_url.endswith(".git"):
         remote_url = remote_url[:-4]
@@ -59,6 +60,7 @@ async def update_jmthon(e):
             parse_mode="html",
             link_preview=False,
         )
+
     msg = await xx.eor(
         f'<strong>جـار تحديث سورس يـــمنثون يرجى الأنتظار قليلا</strong>',
         parse_mode="html",
@@ -69,4 +71,5 @@ async def update_jmthon(e):
 
 async def update(eve):
     await bash(f"git pull && {sys.executable} -m pip install -r requirements.txt")
+    await eve.edit("✅ <strong>تم التحديث بنجاح.</strong>", parse_mode="html")
     os.execl(sys.executable, sys.executable, "-m", "yamenthon")
