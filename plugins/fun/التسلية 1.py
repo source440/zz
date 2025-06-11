@@ -2,6 +2,8 @@
 **❃ جميع هذه الاوامر تستخدم فقط بالأرسال**
 
 ❃ `{i}غبي`
+❃ `{i}مافيا`  + اسم الشخص
+❃ `{i}ميت`  + اسم الشخص
 ❃ `{i}القنابل`
 ❃ `{i}قتل`
 ❃ `{i}طوبة`
@@ -41,6 +43,42 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 14])
 
+@jmthon_cmd(pattern="ميت (.*)")
+async def _(event):
+    name = event.pattern_match.group(1)
+    event = await eor(event, "⌔∮ جاري دفن الضحية...")
+    await asyncio.sleep(1.5)
+    await event.edit(
+        f" 》--- {name}          \n"
+        "　　　　　|\n"
+        "　　　　　|\n"
+        "　　　　　|\n"
+        "　　　　　|\n"
+        "　　　　　|\n"
+        "　　　　　|\n"
+        "　　　　　|\n"
+        "　　　　　|\n"
+        "　／￣￣＼|\n"
+        "＜ ´･　　 |＼\n"
+        "　|　٣　   | 丶＼\n"
+        "＜ 、･　　|　　＼\n"
+        "　＼＿＿／∪ _ ∪)\n"
+        "　　　　　   Ｕ Ｕ"
+    )
+
+@jmthon_cmd(pattern="مافيا (.*)")
+async def _(event):
+    name = event.pattern_match.group(1)
+    event = await eor(event, "⌔∮ جاري إطلاق النار...")
+    mafia_art = (
+        "__**Commando**__ 🔥\n\n"
+        "_/﹋\\_\n"
+        "(҂`_´)\n"
+        f"<,︻╦╤─ ҉ - - - {name}\n"
+        "_/﹋\\_"
+    )
+    await asyncio.sleep(1.5)
+    await event.edit(mafia_art)
 
 @jmthon_cmd(pattern="القنابل$")
 async def _(event):
@@ -165,3 +203,5 @@ async def _(event):
     await event.edit("- اخر مرة والله ما اعيد")
     await asyncio.sleep(0.3)
     await event.edit("**⌔∮ الله يرحمه نحرك ومات 🔥🔥🔥**")
+    
+
