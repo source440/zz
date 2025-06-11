@@ -611,7 +611,7 @@ async def _(event):
 async def _(event):
     event = await eor(event, g)    
     
-@jmthon_cmd(pattern=r"م20$")
+@jmthon_cmd(pattern=r"م21$")
 async def _(event):
     event = await eor(event, h)    
     
