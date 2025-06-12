@@ -17,7 +17,7 @@ bot_token = JmdB.get_config("BOT_TOKEN")
 jmubot = jmthon_bot = JmthonClient(
         session=StringSession(str(Var.SESSION)),
         app_version=version,
-        device_model="Jmthon",
+        device_model="yamenthon",
        )
 
 
