@@ -16,4 +16,4 @@ aiohttp
 datetime
 urllib3
 aiohttp
-
+emoji
