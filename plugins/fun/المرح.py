@@ -224,7 +224,7 @@ async def wiffun(mention):
     if not user:
         return
     if user.id == 5571722913:
-        return await eor(mention, f"**⌔∮ عذرا هذا مطور السورس**")
+        return await eor(mention, f"**⌔∮ ♡عذرا هذا مطور السورس**")
     await eor(mention, f"**نزوج وماتشوف على غيري 🥺💞 ܰ**")
 
 @jmthon_cmd(pattern="طلاق(?: |$)(.*)")
